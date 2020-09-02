@@ -19,8 +19,9 @@ public class PolicyHandler{
     public void wheneverRentalCancelled_RentalCanceled(@Payload RentalCancelled rentalCancelled){
 
         if(rentalCancelled.isMe()){
+
+            giftsendRepository.deleteById(rentalCancelled.getUserId());
             System.out.println("##### listener RentalCanceled : " + rentalCancelled.toJson());
         }
-    }
 
 }
